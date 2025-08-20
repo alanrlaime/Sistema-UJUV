@@ -18,3 +18,26 @@ class Usuario(AbstractUser):
 
     def __str__(self):
         return self.username
+
+class Curso(models.Model):
+    nombre_curso= models.CharField(max_length=50,null=False,blank=False,unique=True)
+    descripcion= models.CharField(max_length=255,null=False,blank=True)
+    duracion= models.CharField(max_length=50,null=False,blank=False)
+    img_url= models.CharField(max_length=100,null=False,blank=False)
+    img_url= models.CharField(max_length=100,null=False,blank=False)
+    cupos = models.IntegerField(max_length=3)
+
+class Persona(models.Model):
+    paterno= models.CharField(max_length=255,null=False,blank=False)
+    materno= models.CharField(max_length=255,null=False,blank=False)
+    nombre_p= models.CharField(max_length=255,null=False,blank=False)
+    ci= models.CharField(max_length=12)
+    ROL_CHOICES = [
+        ('est', 'Estudiante'),
+        ('prof', 'Profesor'),
+    ]
+    rol = models.CharField(max_length=4, choices=ROL_CHOICES)
+    correo = models.EmailField(unique=True)
+    celular = models.CharField(max_length=15) 
+    fecha_nacimiento = models.DateField(null=True, blank=True)
+    
